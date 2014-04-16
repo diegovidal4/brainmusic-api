@@ -1,0 +1,7 @@
+{
+	username : "diegovidal4",
+	email : "diego.vidal4@gmail.com",
+	name : "Diego",
+	lastname : "Vidal",
+	age : 24
+}
