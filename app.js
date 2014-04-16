@@ -29,7 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 //Detectar conexion con mongodb
-mongoose.connect("mongodb://localhost/brainmusic",function(err,res){
+mongoose.connect("mongodb://brainmusic:brainmusic1@ds039027.mongolab.com:39027/brainmusic",function(err,res){
 	if(err){
 		console.log("Error de conexion a la base de datos: "+err);
 	}else{
