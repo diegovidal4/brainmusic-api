@@ -6,6 +6,7 @@
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
+var style = require('./routes/style');
 var http = require('http');
 var path = require('path');
 var mongoose=require("mongoose");
@@ -36,8 +37,10 @@ app.get('/users', user.list);
 app.post("/users",user.addUser);
 app.get("/users/:username",user.findUser);
 app.put("/users/:username",user.updateUser);
+app.get("/styles",style.list);
+app.post("/styles",style.addStyle);
 
-console.log("Conetando a la base de datos en mongolab...");
+console.log("Conectando a la base de datos en mongolab...");
 mongoose.connect("mongodb://brainmusic:brainmusic1@ds039027.mongolab.com:39027/brainmusic",function(err,res){
 	if(err){
 		console.log("Error de conexion a la base de datos: "+err);
@@ -46,7 +49,6 @@ mongoose.connect("mongodb://brainmusic:brainmusic1@ds039027.mongolab.com:39027/b
 		http.createServer(app).listen(app.get('port'), function(){
 		  console.log('Express server listening on port ' + app.get('port'));
 		});
-		console.log("Conectado a la base de datos");
 	}
 
 });

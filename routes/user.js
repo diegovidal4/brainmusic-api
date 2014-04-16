@@ -3,6 +3,7 @@
  * GET users listing.
  */
 var User = require("../models/user.js");
+var Style = require("../models/style.js");
 
 exports.list = function(req, res){
   User.find(function(err,users){
@@ -18,12 +19,21 @@ exports.list = function(req, res){
 exports.addUser=function(req,res){
 	console.log("POST");
 	console.log(req.body);
+	estilos=req.body.styles.split(",");
+	aux=[];
+	estilos.forEach(function(estilo){
+		style= new Style({
+			style_name:estilo,
+		});
+		aux.push(style);
+	});
 	var user = new User({
 		username:req.body.username,
 		email:req.body.email,
 		name:req.body.name,
 		lastname:req.body.lastname,
-		age:req.body.age
+		age:req.body.age,
+		styles:aux
 	});
 	user.save(function(err){
 		if(!err){
