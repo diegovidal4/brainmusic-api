@@ -1,7 +1,7 @@
 var Style = require("../models/style.js");
 
 exports.list = function(req, res){
-  Estilo.find(function(err,estilos){
+  Style.find(function(err,estilos){
   	if(!err)
   	{
   		res.send(estilos);

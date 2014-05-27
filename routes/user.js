@@ -46,12 +46,24 @@ exports.addUser=function(req,res){
 };
 
 exports.findUser=function(req,res){
-	User.find({username:req.params.username},function(err,user){
+	User.find({username:req.params.username,password:req.params.password},function(err,user){
 		if(!err)
 		{
 			res.send(user);
 		}else{
 			console.log("Error: "+err);
+			res.send(0);
+		}
+	});
+};
+exports.login=function(req,res){
+	User.find({username:req.body.username,password:req.body.password},function(err,user){
+		if(!err)
+		{
+			res.send(user);
+		}else{
+			console.log("Error: "+err);
+			res.send(0);
 		}
 	});
 };
